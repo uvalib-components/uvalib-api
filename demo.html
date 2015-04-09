@@ -10,5 +10,9 @@
   <body unresolved>
     <p>An `uvalib-api` looks like this:</p>
     <uvalib-api></uvalib-api>
+    <script>
+      var ourTag = document.getElementsByTagName('uvalib-api')[0];
+      ourTag.addEventListener("uvalib-api-load", function(){alert('Loaded API! Have fun...')}, false);
+    </script>
   </body>
 </html>
