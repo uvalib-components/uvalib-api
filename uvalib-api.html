@@ -1,7 +1,8 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../google-apis/google-client-api.html">
 
 <!--
-Element providing solution to no problem in particular.
+Element providing the UVa Library's API service.
 
 ##### Example
 
@@ -12,67 +13,38 @@ Element providing solution to no problem in particular.
 @status alpha
 @homepage http://uvalib-components.github.io/uvalib-api
 -->
-<polymer-element name="uvalib-api" attributes="author fancy">
+<polymer-element name="uvalib-api" attributes="">
   <template>
-    <link rel="stylesheet" href="uvalib-api.css">
-    <h1>Hello from uvalib-api</h1>
-    <content></content>
+    <google-api-loader name="uvalibrary" version="v0.1" appId="new-dot-uvalibapi" on-google-api-load="{{apiLoaded}}">
   </template>
   <script>
     Polymer({
-      /**
-       * The `author` attribute sets an initial author
-       *
-       * @attribute author
-       * @type string
-       * @default 'Dimitri Glazkov'
-       */
-      author: 'Dimitri Glazkov',
 
       /**
-       * `fancy` is a property that does something fancy.
+       * The `getAPI` method will return a greeting.
        *
-       * @property fancy
-       * @type bool
-       * @default false
+       * @method getAPI
+       * @return {Object} Returns the api.
        */
-      fancy: false,
-
-      ready: function () {
-        // Ready is a lifecycle callback.
-        // You can do setup work in here.
-        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+      getAPI: function () {
+        return gapi.client.uvalibrary;
       },
 
       /**
-       * The `sayHello` method will return a greeting.
+       * The `uvalib-api-load` event is fired whenever the api finises loading.
        *
-       * @method sayHello
-       * @param {String} greeting Pass in a specific greeting.
-       * @return {String} Returns a string greeting.
-       */
-      sayHello: function (greeting) {
-        var response = greeting || 'Hello World!';
-        return 'uvalib-api says, ' + response;
-      },
-
-      /**
-       * The `uvalib-api-lasers-success` event is fired whenever we
-       * call fireLasers.
+       * @event uvalib-api-load
+       * @param {Object} api
        *
-       * @event uvalib-api-lasers-success
-       * @param {Object} detail
-       *   @param {string} detail.sound An amazing sound.
        */
 
       /**
-       * The `fireLasers` method will fire the lasers. At least
-       * it will dispatch an event that claims lasers were fired :)
+       * The `apiLoaded` method will dispatch an event that claims the api has been loaded
        *
-       * @method fireLasers
+       * @method apiLoaded
        */
-      fireLasers: function () {
-        this.fire('uvalib-api-lasers-success', { sound: 'Pew pew pew!' });
+      apiLoaded: function () {
+        this.fire('uvalib-api-load', gapi.client.uvalibrary);
       }
     });
   </script>
