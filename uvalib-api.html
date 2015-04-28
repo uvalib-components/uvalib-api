@@ -15,6 +15,7 @@ Element providing the UVa Library's API service.
 -->
 <polymer-element name="uvalib-api" attributes="">
   <template>
+    <script src="lodash.min.js"></script>
     <google-api-loader name="uvalibrary" version="v0.1" appId="new-dot-uvalibapi" on-google-api-load="{{apiLoaded}}">
   </template>
   <script>
