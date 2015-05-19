@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../google-apis/google-client-api.html">
+<!-- Use our version till they fix Googles version -->
+<link rel="import" href="google-client-loader.html">
 
 <!--
 Element providing the UVa Library's API service.
@@ -13,21 +14,20 @@ Element providing the UVa Library's API service.
 @status alpha
 @homepage http://uvalib-components.github.io/uvalib-api
 -->
-<polymer-element name="uvalib-api" attributes="">
+<dom-module id="uvalib-api">
   <template>
-    <script src="lodash.min.js"></script>
-    <google-api-loader name="uvalibrary" version="v0.1" appId="new-dot-uvalibapi" on-google-api-load="{{apiLoaded}}">
+    <google-client-loader id="uvalibrary" name="uvalibrary" version="v0.1" app-id="new-dot-uvalibapi" on-google-api-load="_apiLoaded">
   </template>
-  <script>
-    Polymer({
+</dom-module>
+<script>
+  Polymer({
+    is: "uvalib-api",
 
       /**
-       * The `getAPI` method will return a greeting.
-       *
-       * @method getAPI
-       * @return {Object} Returns the api.
+       * Returns the loaded API.
+       * @type gapi.client
        */
-      getAPI: function () {
+      get api() {
         return gapi.client.uvalibrary;
       },
 
@@ -39,14 +39,9 @@ Element providing the UVa Library's API service.
        *
        */
 
-      /**
-       * The `apiLoaded` method will dispatch an event that claims the api has been loaded
-       *
-       * @method apiLoaded
-       */
-      apiLoaded: function () {
+      _apiLoaded: function () {
+        console.log('loaded api');
         this.fire('uvalib-api-load', gapi.client.uvalibrary);
       }
     });
-  </script>
-</polymer-element>
+</script>

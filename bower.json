@@ -1,17 +1,23 @@
 {
   "name": "uvalib-api",
-  "version": "0.0.0",
+  "version": "0.9.0",
+  "homepage": "https://github.com/uvalib-components/uvalib-api.html",
+  "authors": [
+    "Doug Chestnut <dougchestnut@gmail.com>"
+  ],
+  "description": "Helper to connect to the UVa Library's Google Cloud Endpoint API wrapper",
   "keywords": [
-    "seed",
+    "api",
     "polymer",
-    "web-components"
+    "web-components",
+    "uva"
   ],
   "main": "uvalib-api.html",
   "dependencies": {
-    "polymer": "Polymer/polymer",
-    "google-apis": "GoogleWebComponents/google-apis"
+    "polymer": "Polymer/polymer#v0.9.0-rc.1",
+    "google-apis": "GoogleWebComponents/google-apis#0.8-preview"
   },
   "devDependencies": {
-    "web-component-tester": "Polymer/web-component-tester"
+    "iron-component-page": "PolymerElements/iron-component-page#0.9.1"
   }
 }
