@@ -1,0 +1,47 @@
+<link rel="import" href="../polymer/polymer.html">
+<!-- Use our version till they fix Googles version -->
+<link rel="import" href="google-client-loader.html">
+
+<!--
+Element providing the UVa Library's API service.
+
+##### Example
+
+    <uvalib-api></uvalib-api>
+
+@element uvalib-api
+@blurb Element providing solution to no problem in particular.
+@status alpha
+@homepage http://uvalib-components.github.io/uvalib-api
+-->
+<dom-module id="uvalib-api">
+  <template>
+    <google-client-loader id="uvalibrary" name="uvalibrary" version="v0.1" app-id="new-dot-uvalibapi" on-google-api-load="_apiLoaded">
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "uvalib-api",
+
+      /**
+       * Returns the loaded API.
+       * @type gapi.client
+       */
+      get api() {
+        return gapi.client.uvalibrary;
+      },
+
+      /**
+       * The `uvalib-api-load` event is fired whenever the api finishes loading.
+       *
+       * @event uvalib-api-load
+       * @param {Object} api
+       *
+       */
+
+      _apiLoaded: function () {
+        console.log('loaded api');
+        this.fire('uvalib-api-load', gapi.client.uvalibrary);
+      }
+    });
+</script>
