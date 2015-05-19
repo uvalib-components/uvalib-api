@@ -1,47 +1,60 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
 <link rel="import" href="../polymer/polymer.html">
-<!-- Use our version till they fix Googles version -->
 <link rel="import" href="google-client-loader.html">
 
 <!--
 Element providing the UVa Library's API service.
 
-##### Example
+Example:
 
     <uvalib-api></uvalib-api>
 
-@element uvalib-api
-@blurb Element providing solution to no problem in particular.
-@status alpha
-@homepage http://uvalib-components.github.io/uvalib-api
 -->
 <dom-module id="uvalib-api">
+
   <template>
     <google-client-loader id="uvalibrary" name="uvalibrary" version="v0.1" app-id="new-dot-uvalibapi" on-google-api-load="_apiLoaded">
   </template>
+
 </dom-module>
+
 <script>
+
   Polymer({
-    is: "uvalib-api",
 
-      /**
-       * Returns the loaded API.
-       * @type gapi.client
-       */
-      get api() {
-        return gapi.client.uvalibrary;
-      },
+    is: 'uvalib-api',
 
-      /**
-       * The `uvalib-api-load` event is fired whenever the api finishes loading.
-       *
-       * @event uvalib-api-load
-       * @param {Object} api
-       *
-       */
+    // Element Behavior
 
-      _apiLoaded: function () {
-        console.log('loaded api');
-        this.fire('uvalib-api-load', gapi.client.uvalibrary);
-      }
-    });
+    /**
+     * The `uvalib-api-load` event is fired whenever the api finishes loading.
+     *
+     * @event uvalib-api-load
+     * @param {Object} api
+     *
+     */
+
+    /**
+     * Returns the loaded API.
+     * @type gapi.client
+     */
+    get api() {
+      return gapi.client.uvalibrary;
+    },
+
+    _apiLoaded: function () {
+      console.log('loaded api');
+      this.fire('uvalib-api-load', gapi.client.uvalibrary);
+    }
+
+  });
+
 </script>
