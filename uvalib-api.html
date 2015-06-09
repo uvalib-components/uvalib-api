@@ -8,15 +8,11 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="google-client-loader.html">
-
+<link rel="import" href="../google-apis/google-client-loader.html">
 <!--
 Element providing the UVa Library's API service.
-
 Example:
-
     <uvalib-api></uvalib-api>
-
 -->
 <dom-module id="uvalib-api">
 
@@ -27,13 +23,9 @@ Example:
 </dom-module>
 
 <script>
-
   Polymer({
-
     is: 'uvalib-api',
-
     // Element Behavior
-
     /**
      * The `uvalib-api-load` event is fired whenever the api finishes loading.
      *
@@ -41,7 +33,6 @@ Example:
      * @param {Object} api
      *
      */
-
     /**
      * Returns the loaded API.
      * @type gapi.client
@@ -49,12 +40,9 @@ Example:
     get api() {
       return gapi.client.uvalibrary;
     },
-
     _apiLoaded: function () {
       console.log('loaded api');
       this.fire('uvalib-api-load', gapi.client.uvalibrary);
     }
-
   });
-
 </script>

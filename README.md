@@ -1,11 +1,6 @@
-# uvalib-api
+# seed-element
 
 Element providing the UVa Library's API service.
-
-
-## Getting Started
-
-See [guide to seed-element](http://www.polymer-project.org/docs/start/reusableelements.html) to help get you rolling.
 
 
 ## Dependencies
@@ -32,9 +27,8 @@ And you can run it via:
 
     polyserve
 
-Once running, you can view your element's files under
-`http://localhost:8080/components/uvalib-api/`, where `uvalib-api` is the
-name of the directory containing it.
+Once running, you can preview your element at
+`http://localhost:8080/components/uvalib-api/`, where `uvalib-api` is the name of the directory containing it.
 
 
 ## Testing Your Element

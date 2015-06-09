@@ -17,21 +17,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script src="../../web-component-tester/browser.js"></script>
 
     <!-- Step 1: import the element to test -->
-    <link rel="import" href="../seed-element.html">
+    <link rel="import" href="../uvalib-api.html">
   </head>
   <body>
 
+    <!-- You can use the document as a place to set up your fixtures. -->
     <uvalib-api></uvalib-api>
 
     <script>
-    var myEl = document.querySelector('uvalib-api');
+      var myEl = document.querySelector('uvalib-api');
 
-    suite('<uvalib-api>', function() {
+      suite('<uvalib-api>', function() {
 
-      test('gets the API', function() {
-        myEl.addEventListener('uvalib-api-load', function(event) {
-          assert.typeOf(myEl.api, 'object');
+        test('gets the API', function() {
+          myEl.addEventListener('uvalib-api-load', function(event) {
+            assert.typeOf(myEl.api, 'object');
+          });
         });
+
       });
     </script>
 
